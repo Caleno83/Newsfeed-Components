@@ -127,6 +127,8 @@ function articleMaker (obj) {
   const button = document.createElement('span');
   
   //adding elements next to other elements
+  // it can be this way too
+ // article.append(title, date, firstParagraph, secondParagraph, thirdParagraph, button);
   article.appendChild(title);
   article.appendChild(date);
   article.appendChild(firstParagraph);
@@ -142,13 +144,15 @@ function articleMaker (obj) {
   //adding text content
   title.textContent = obj.title;
   date.textContent = obj.date;
+  date.style = "padding: 10px 0 0 0";
   firstParagraph.textContent = obj.firstParagraph;
   secondParagraph.textContent = obj.secondParagraph;
   thirdParagraph.textContent = obj.thirdParagraph;
-  button.textContent = '\u25bc';
+  button.textContent = 'More Info \u25bc';
+  button.style = "background-color: black; color: white; border: 2px solid black; border-radius: 5px;padding: 2px 10px 2px 10px; margin-bottom: 3px";
 
   //adding Event Listener to span button
-    button.addEventListener( 'click', () => {
+  button.addEventListener( 'click', () => {
     console.log("botton expanding");
     article.classList.toggle("article-open");
   })
@@ -162,4 +166,8 @@ const articles = document.querySelector(".articles");
 data.map( item => {
   let newArticle = articleMaker(item);
   articles.appendChild(newArticle);
+    //or this way
+  //articles.appendChild(articleMaker(item));
 })
+
+
