@@ -110,4 +110,56 @@ const data = [
   Step 4: Outside your function, loop over the data. At each iteration you'll use your component to create an article and append it to the DOM inside the 'articles' div.
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+
 */
+
+
+
+function articleMaker (obj) {
+
+  //creating new elements
+  const article = document.createElement('div');
+  const title = document.createElement('h2');
+  const date = document.createElement('p');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
+  const button = document.createElement('span');
+  
+  //adding elements next to other elements
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(firstParagraph);
+  article.appendChild(secondParagraph);
+  article.appendChild(thirdParagraph);
+  article.appendChild(button);
+
+  //adding class names
+  article.classList.add("article");
+  date.classList.add("date");
+  button.classList.add("expandButton");
+
+  //adding text content
+  title.textContent = obj.title;
+  date.textContent = obj.date;
+  firstParagraph.textContent = obj.firstParagraph;
+  secondParagraph.textContent = obj.secondParagraph;
+  thirdParagraph.textContent = obj.thirdParagraph;
+  button.textContent = '\u25bc';
+
+  //adding Event Listener to span button
+    button.addEventListener( 'click', () => {
+    console.log("botton expanding");
+    article.classList.toggle("article-open");
+  })
+
+  return article;
+  
+}
+
+const articles = document.querySelector(".articles");
+
+data.map( item => {
+  let newArticle = articleMaker(item);
+  articles.appendChild(newArticle);
+})
