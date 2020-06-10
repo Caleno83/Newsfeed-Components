@@ -219,6 +219,8 @@ function articleMaker (obj) {
   
 }
 
+//console.log(articleMaker(data))
+
 const articles = document.querySelector(".articles");
 
 data.map( item => {

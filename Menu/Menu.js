@@ -38,23 +38,24 @@ function menuMaker (arr) {
   //creating elements
   const menu = document.createElement('div');
   const listUnorg = document.createElement('ul');
-
- 
+  
 //adding ul after div 
   menu.appendChild(listUnorg);
 
-//selecting new class to menu div
+
+  //selecting new class to menu div
   menu.classList.add('menu');
 
   //Step 2: Inside the function, iterate over the array creating a list item <li> element for each item in the array. 
   //Add those items to the <ul>
-  menuItems.forEach ((arr) => {
+  arr.forEach ((i) => {
       const list = document.createElement('li');
-      list.textContent = arr;
+      list.textContent = i;
       listUnorg.appendChild(list);
   })
 
-  //creating a evernt listener
+  const menuButton = document.querySelector('.menu-button');
+  //creating a event listener
   menuButton.addEventListener('click', () => {
     console.log('opening the menu list')
     menu.classList.toggle('menu--open')
@@ -64,9 +65,9 @@ function menuMaker (arr) {
 
 }
 
-const header = document.querySelector('.header');
+//console.log(menuMaker(menuItems));
 
-const menuButton = document.querySelector('.menu-button');
+const header = document.querySelector('.header');
 
 let newMenu  = menuMaker(menuItems);
   header.appendChild(newMenu);
